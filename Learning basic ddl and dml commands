@@ -1,0 +1,102 @@
+DROP TABLE IF EXISTS employee_details;
+CREATE TABLE employee_details(
+   emp_id SERIAL PRIMARY KEY,
+   emp_name VARCHAR(25) NOT NULL,
+   emp_dept VARCHAR(12),
+   post VARCHAR(30),
+   hire_date DATE ,
+   salary NUMERIC(10 , 2)
+ );
+ 
+SELECT * FROM employee_details;
+-- to rename post column to position
+ALTER TABLE employee_details
+RENAME COLUMN post TO position;
+
+ALTER TABLE employee_details
+ALTER COLUMN emp_dept TYPE VARCHAR(35);
+
+
+	INSERT INTO employee_details(emp_name, emp_dept, position, hire_date, salary)
+	       VALUES('Prince yadav', 'AIML', 'Software developer', '2020-10-11', 80000.00),
+		         ('Rahul Sharma', 'CSE', 'Backend Developer', '2019-07-15', 75000.00),
+	           ('Anjali Verma', 'IT', 'Frontend Developer', '2021-03-22', 68000.00),
+	         ('Neha Gupta', 'AIML', 'Data Analyst', '2022-01-10', 72000.00),
+	         ('Amit Singh', 'ECE', 'Engineer', '2018-09-05', 70000.00),
+	         ('Pooja Mehta', 'CSE', 'Full Stack Developer', '2020-12-18', 85000.00),
+	         ('Karan Patel', 'IT', 'Cloud Engineer', '2019-05-30', 90000.00),
+	         ('Sneha Reddy', 'AIML', 'Machine Learning Engineer', '2021-08-14', 95000.00),
+	         ('Vikas Kumar', 'CSE', 'Software Tester', '2017-11-25', 60000.00),
+	          ('Ritika Jain', 'IT', 'UI/UX Designer', '2022-06-02', 65000.00);
+
+		  TRUNCATE TABLE employee_details RESTART IDENTITY;
+
+DROP TABLE IF EXISTS employee_details2;
+CREATE TABLE employee_details2(
+   emp_id INT PRIMARY KEY,
+   emp_name VARCHAR(25) NOT NULL,
+   emp_dept VARCHAR(12),
+   position VARCHAR(30),
+   hire_date DATE ,
+   salary NUMERIC(10 , 2)
+ );
+SELECT * FROM employee_details2;
+
+ INSERT INTO employee_details2(emp_id, emp_name, emp_dept, position, hire_date, salary)
+     VALUES(100, 'Prince yadav', 'AIML', 'Software developer', '2020-10-11', 80000.00),
+	      (101, 'Rahul Sharma', 'CSE', 'Backend Developer', '2019-07-15', 75000.00),
+          (102, 'Anjali Verma', 'IT', 'Frontend Developer', '2021-03-22', 68000.00),
+         (103, 'Neha Gupta', 'AIML', 'Data Analyst', '2022-01-10', 72000.00),
+         (104, 'Amit Singh', 'ECE', 'Engineer', '2018-09-05', 70000.00),
+         (105, 'Pooja Mehta', 'CSE', 'Full Stack Developer', '2020-12-18', 85000.00);
+
+	DELETE FROM employee_details2 WHERE emp_id = 102;
+	ALTER TABLE employee_details2 
+	DROP COLUMN salary;
+	truncate table employee_details2 ;
+
+	CREATE TABLE users (
+	 user_id INT PRIMARY KEY ,
+     name VARCHAR(50) NOT NULL ,
+	 email VARCHAR(50) UNIQUE , 
+	 age INT CHECK (age>=18),
+	 reg_date TIMESTAMP DEFAULT CURRENT_TIMESTAMP
+	);
+  -- inserting data into table users
+	INSERT INTO users (user_id, name, email, age) VALUES
+    (1, 'Alice Sharma', 'alice.sharma@example.com', 25),
+    (2, 'Rohan Gupta', 'rohan.gupta@example.com', 30),
+    (3, 'Neha Singh', 'neha.singh@example.com', 22),
+    (4, 'Vikram Patel', 'vikram.patel@example.com', 28),
+    (5, 'Sara Khan', 'sara.khan@example.com', 35);
+	SELECT * FROM users;
+	UPDATE users SET age = 26
+	WHERE name ='Alice Sharma';
+	SELECT * FROM users ORDER BY user_id ASC;
+
+	UPDATE users SET name ='Prince Yadav'
+	WHERE name ='Rohan Gupta';
+
+	UPDATE users SET email ='prince123@gmail.com',age=22
+	WHERE name='Prince Yadav';
+
+	UPDATE users SET age=age+1
+	WHERE email LIKE '%@example.com';
+
+	-- to change datatype of age column from int to small int
+
+	ALTER TABLE users
+	ALTER COLUMN age TYPE SMALLINT;
+
+	-- add not null constraints to age column
+
+	 
+	ALTER TABLE users
+	ALTER COLUMN age  SET NOT NULL;
+
+	SELECT * FROM users ORDER BY user_id ASC;
+
+	ALTER TABLE users
+	ADD CONSTRAINT age CHECK(age>=18);
+	
+	
