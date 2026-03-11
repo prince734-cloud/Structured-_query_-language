@@ -1,0 +1,35 @@
+-- AND operator
+SELECT * FROM employee2
+WHERE age >30 AND salary>60000;
+
+-- OR operator
+SELECT * FROM employee2
+WHERE age >30 OR salary>60000;
+
+-- NOT operator
+SELECT * FROM employee2
+WHERE NOT (department = 'IT');
+
+-- Retrive employee whose salary is between 40000 to 60000 - use Between operator
+SELECT first_name , last_name , salary 
+FROM employee2
+WHERE salary BETWEEN 40000 AND 60000 ;
+
+-- Find employee whose mail address end with gmail.com -use LIKE operator
+
+SELECT first_name , last_name , email
+FROM employee2
+WHERE email LiKE '%@gmail.com';
+
+--find employee whose name contains d in any place 
+SELECT first_name , last_name 
+FROM employee2
+WHERE first_name LIKE '%d%';
+
+
+-- Retrive employee who belong to either the 'Finance' department or 'Marketing' department -- use IN operator
+
+SELECT first_name , last_name , department
+FROM employee2
+WHERE department IN ('Finance' , 'Marketing');
+
