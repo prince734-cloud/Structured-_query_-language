@@ -1,0 +1,21 @@
+--Use of NULL operator
+SELECT first_name , last_name 
+FROM employee2
+WHERE email IS NULL;
+
+--Use of ORDREBY operator
+SELECT first_name , last_name 
+FROM employee2
+ORDER BY salary DESC;
+
+--Use of LIMIT operator by retrive the top 5 highest paid employee.
+SELECT first_name , last_name ,salary
+FROM employee2
+ORDER BY salary DESC
+LIMIT 5;
+
+--Use of distinct operator
+SELECT COUNT (DISTINCT department)
+FROM employee2;
+
+
