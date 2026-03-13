@@ -1,0 +1,46 @@
+CREATE TABLE students_2023 (
+    student_id INT PRIMARY KEY,
+    student_name VARCHAR(50),
+    course VARCHAR(50)
+);
+INSERT INTO students_2023 VALUES
+(101, 'Aman', 'BCA'),
+(102, 'Riya', 'BTech'),
+(103, 'Rahul', 'BSc'),
+(104, 'Neha', 'BCA'),
+(105, 'Arjun', 'BTech'),
+(106, 'Sneha', 'BBA'),
+(107, 'Karan', 'BSc');
+
+DROP TABLE IF EXISTS students_2024;
+CREATE TABLE students_2024 (
+    student_id INT PRIMARY KEY,
+    student_name VARCHAR(50),
+    course VARCHAR(50)
+);
+INSERT INTO students_2024 VALUES
+(101, 'Aman', 'BCA'),
+(202, 'Rohit', 'BTech'),
+(203, 'Ankit', 'BSc'),
+(204, 'Simran', 'BBA'),
+(205, 'Vikas', 'BCA'),
+(206, 'Pooja', 'BTech'),
+(107, 'Karan', 'BSc');
+
+SELECT * FROM students_2023;
+SELECT * FROM students_2024;
+
+--Union operator
+
+SELECT student_name , course
+FROM students_2023 
+UNION 
+SELECT student_name , course
+FROM students_2024;
+
+--Union all operator this combines result keeps duplicate also.
+SELECT student_name , course
+FROM students_2023 
+UNION ALL
+SELECT student_name , course
+FROM students_2024;
