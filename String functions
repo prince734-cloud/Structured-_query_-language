@@ -1,0 +1,36 @@
+SELECT UPPER(category) AS Capital
+FROM products;
+
+SELECT LOWER(category) Smaller
+FROM products;
+
+--use of length function
+
+SELECT product_name , LENGTH(product_name) AS word_length
+FROM products;
+
+--use of concatenate function
+SELECT CONCAT(product_name,'-',category) AS product_details
+FROM products;
+
+--use of substring function 
+--extract first five character of from prooduct_name
+
+SELECT SUBSTRING(product_name , 1, 5) AS short_name
+FROM products;
+
+--Remove leading and trailing spaces from string
+SELECT TRIM('  Monitor      ') AS trimmed_text;
+
+--use of replace function
+SELECT REPLACE(product_name, 'phones','set')
+FROM products;
+
+--Get first three leter from left by using LEFT function
+SELECT LEFT(category ,3) AS category_capital
+FROM products;
+
+--Get first three leter from right by using RIGHT function
+
+SELECT  category,RIGHT(category ,3) AS rightmost_words
+FROM products;
