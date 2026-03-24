@@ -1,0 +1,38 @@
+SELECT * FROM products;
+
+--case function - categorizing based on condition
+--we will categorizeproducts into price ranges:
+
+SELECT product_name , price,
+     CASE 
+	   WHEN price>=50000 THEN 'Expensive'
+	   WHEN price>=10000 AND price<=49999 THEN 'Affordable'
+	   ELSE 'Cheap'
+	  END AS price_category
+FROM products;
+
+
+SELECT product_name ,quantity ,
+     CASE 
+	   WHEN price>=50000 THEN 'Expensive'
+	   WHEN price>=10000 AND price<=49999 THEN 'Affordable'
+	   ELSE 'Cheap'
+	  END AS price_category
+FROM products;
+
+SELECT product_name,quantity,
+    CASE 
+	 WHEN quantity>=10 THEN 'In Stock'
+	 WHEN quantity>=5 AND quantity<=9 THEN 'Limited Stock'
+	ELSE 'Out of Stock'
+  END AS stock_status
+FROM products;
+
+
+SELECT product_name,category,
+    CASE 
+	 WHEN category LIKE 'Electronics' THEN 'Electronic_item'
+	 WHEN category LIKE 'Furniture' THEN 'Furniture_item'
+	ELSE 'Accesory'
+  END AS category_status
+FROM products;
