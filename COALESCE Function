@@ -1,0 +1,22 @@
+SELECT * FROM products;
+
+ALTER TABLE products
+DROP COLUMN Discounted_price;
+--Conditional Functions
+--COLESCE Functions -use to handle NULL values
+
+ALTER TABLE products
+ADD COLUMN Discounted_price NUMERIC(10,2) ;
+
+UPDATE  products
+SET Discounted_price = NULL
+WHERE product_name IN ('Desk' , 'Laptop');
+
+UPDATE products
+SET Discounted_price = price*0.85
+WHERE product_name NOT IN ('Desk','Laptop');
+
+
+SELECT product_name , 
+    COALESCE(Discounted_price , price) AS Final_price
+FROM products;
