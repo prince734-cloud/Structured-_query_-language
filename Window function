@@ -1,0 +1,21 @@
+SELECT * FROM products
+order by (category , price) DESC;
+
+-- USE OF WINDOW FUNCTION 
+-- Assing a unique row number to each products with in same category
+
+
+SELECT product_name , category , price,
+   DENSE_RANK() OVER(PARTITION BY category ORDER BY price DESC) AS ROW_category
+FROM products;
+
+--calculate running total
+
+SELECT product_name , category , price,
+   SUM(price) OVER(PARTITION BY category ORDER BY price DESC) AS average
+FROM products;
+
+--Running avg
+SELECT product_name , category , price,
+   AVG(price) OVER(ORDER BY price) AS ROW_category
+FROM products;
