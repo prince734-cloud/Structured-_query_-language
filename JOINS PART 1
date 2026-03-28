@@ -1,0 +1,63 @@
+DROP TABLE IF EXISTS Employee_3;
+CREATE TABLE Employee_3(
+   emp_id SERIAL PRIMARY KEY,
+   first_name VARCHAR(50),
+   last_name VARCHAR(50),
+   department_id INT 
+);
+SELECT * FROM Employee_3;
+
+INSERT INTO Employee_3(first_name , last_name , department_id)
+ VALUES('Rahul' , 'Sharma',101),
+        ('Priya','Mehta',102),
+		('Ankit','Verma',103),
+		('Simran','Kaur',NULL),
+		('Aman','Singh',101);
+ DROP TABLE IF EXISTS Departments;
+CREATE TABLE Departments(
+  department_id INT PRIMARY KEY,
+  department_name VARCHAR(70)
+);
+
+--INNER JOIN
+SELECT * FROM Departments;
+
+INSERT INTO Departments(department_id , department_name)
+ VALUES(101,'Sales'),
+        (102,'Marketing'),
+		(103,'IT'),
+		(104,'HR');
+
+SELECT e.first_name,e.last_name,
+       d.department_id,d.department_name
+FROM Employee_3 e
+INNER JOIN
+Departments d
+ON e.department_id=d.department_id;
+
+--LEFT JOIN 
+--Retrive all employee_3 and their departments names , including those without a department
+
+SELECT e.first_name,e.last_name,
+       d.department_id,d.department_name
+FROM Employee_3 e
+LEFT JOIN 
+Departments d
+ON e.department_id=d.department_id;
+
+
+--RIGHT JOIN 
+SELECT e.first_name,e.last_name,
+       d.department_id,d.department_name
+FROM Employee_3 e
+RIGHT JOIN 
+Departments d
+ON e.department_id=d.department_id;
+
+--FULL OUTER JOIN 
+SELECT e.first_name,e.last_name,
+       d.department_id,d.department_name
+FROM Employee_3 e
+FULL OUTER JOIN 
+Departments d
+ON e.department_id=d.department_id;
