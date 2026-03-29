@@ -1,0 +1,32 @@
+SELECT * FROM employee2;
+SELECT * FROM employee_details;
+--find second max salary from employee2
+
+--method 1
+SELECT max(salary) from employee_details
+where salary not in (select max(salary) from employee_details);
+--method 2
+SELECT max(salary) from employee_details
+where salary < (select max(salary) from employee_details);
+--max salary department wise
+SELECT emp_dept, max(salary) FROM employee_details
+GROUP BY emp_dept;
+
+SELECT distinct department from employee2;
+
+--display alternate(odd) records 
+select *
+from (
+select * , row_number() over() as rn
+from employee_details
+) t
+where rn%2=1;
+
+--display alternate even records
+
+select * 
+from(
+select * , row_number() over() as rn
+from employee_details
+) t
+where rn%2=0;
