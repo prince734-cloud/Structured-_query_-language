@@ -1,0 +1,28 @@
+SELECT * FROM Departments;
+SELECT * FROM Employee_3;
+
+--CROSS JOIN
+--Retrive all possilbe combination of Departments and employee_3
+
+SELECT e.first_name , e.last_name,d.department_name,d.department_id
+FROM Employee_3 e
+CROSS JOIN
+Departments d;
+
+--SELF JOIN 
+--Find employee_3 who shares same data
+--Same table join with it self
+
+SELECT e1.first_name AS Employee_name1,
+       e2.First_name AS Employee_name2,
+	   d.department_name
+FROM Employee_3 e1 JOIN employee_3 e2
+ON e1.department_id = e2.department_id
+ AND e1.emp_id != e2.emp_id
+ JOIN 
+ Departments d
+ ON e1.department_id=d.department_id;
+
+ 
+
+ 
