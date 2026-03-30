@@ -1,0 +1,29 @@
+--find dupicate values and its frequency of a column
+
+select first_name ,count(*) 
+from employee2
+group by first_name
+having count(*) >1; 
+
+--display the employee names whose name start with M
+
+select first_name , last_name 
+from employee2
+where first_name like 'M%';
+
+--name ends with N
+select first_name , last_name 
+from employee2
+where first_name like '%N';
+
+--having m in name
+
+select first_name , last_name 
+from employee2
+where first_name like '%m%';
+
+select first_name , last_name 
+from employee2
+where first_name  NOT like '%m%';
+
+
