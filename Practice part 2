@@ -1,0 +1,27 @@
+-- retrive name of employee whose firstname length is exactly 4
+SELECT  first_name , last_name
+from employee2
+where  LENGTH(first_name)=4;
+--retrive name of employee whose firstname conatains m in 3rd position
+SELECT first_name , last_name
+from employee2
+where first_name like '___m%';
+--retrive nam eof employee who join in dec month
+select first_name , joining_date
+from employee2 
+where EXTRACT(month from joining_date)=12;
+
+select first_name , joining_date
+from employee2 
+where date_part('month' , joining_date)=12;
+
+--retrive name of employee whose name contaisn exactly two l;
+SELECT * FROM 
+employee2
+where first_name like '%ll%';
+
+--retrive details of employee whose name first letter is j and last letter is s 
+SELECT * FROM 
+employee2
+where first_name like 'J%s';
+
